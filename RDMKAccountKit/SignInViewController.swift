@@ -12,11 +12,10 @@ import CommonCrypto
 import Alamofire
 
 
-class SignInViewController: UIViewController, UITextFieldDelegate {
+public class SignInViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var FlagImageView: UIImageView!
-    
     @IBOutlet weak var CheckImageView: UIImageView!
     @IBOutlet weak var NextButton: UIButton!
     @IBOutlet weak var SignInLabel: UILabel!
@@ -123,7 +122,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -307,4 +306,9 @@ extension Data {
         let hexBytes = digest.map { String(format: "%02hhx", $0) }
         return hexBytes.joined()
     }
+    
+    var hexDescription: String {
+        return reduce("") {$0 + String(format: "%02x", $1)}
+    }
 }
+

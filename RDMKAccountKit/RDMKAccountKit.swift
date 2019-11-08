@@ -15,16 +15,18 @@ public class RDMKAccountKit{
     public var appImage: String = ""
     public var backgroundColor: UIColor = UIColor(hexString: "#009F6D")
     
-    func RDMKAccountKit(appImage: String, backgroundColor: UIColor){
+    
+    public init(appImage: String, backgroundColor: UIColor){
         
         self.appImage = appImage
         self.backgroundColor = backgroundColor
         
     }
     
-    func viewControllerForLogin() -> SignInViewController?{
-        
-        let viewController = UIStoryboard(name: "Main", bundle: Bundle(for: SignInViewController.self)).instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController
+    public func viewControllerForLogin() -> SignInViewController?{
+        print(self.appImage)
+        print(self.backgroundColor)
+        let viewController = UIStoryboard(name: "RDMK", bundle: Bundle(for: SignInViewController.self)).instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController
         return viewController
     }
     
