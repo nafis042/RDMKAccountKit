@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4544D478237566BA00DA8443 /* Pods_RDMKAccountKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF2DFCDA7FE63DDF1A13DC7 /* Pods_RDMKAccountKit.framework */; };
+		4544D479237566BA00DA8443 /* Pods_RDMKAccountKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AAF2DFCDA7FE63DDF1A13DC7 /* Pods_RDMKAccountKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		455D244123742C8E00BF6B81 /* RDMKAccountKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 455D243F23742C8E00BF6B81 /* RDMKAccountKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		455D244B23742D1100BF6B81 /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D244723742D1100BF6B81 /* OTPViewController.swift */; };
 		455D244C23742D1100BF6B81 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D244823742D1100BF6B81 /* SignInViewController.swift */; };
@@ -14,11 +16,38 @@
 		455D244E23742D1100BF6B81 /* RDMKAccountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D244A23742D1100BF6B81 /* RDMKAccountDelegate.swift */; };
 		455D245223742E6200BF6B81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455D245123742E6200BF6B81 /* Assets.xcassets */; };
 		455D245523742E7900BF6B81 /* RDMK.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455D245323742E7900BF6B81 /* RDMK.storyboard */; };
-		61841784CC3308D5A364F889 /* Pods_RDMKAccountKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF2DFCDA7FE63DDF1A13DC7 /* Pods_RDMKAccountKit.framework */; };
+		4585BFF12376A5B500D92C52 /* TriangleUIVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4585BFF02376A5B500D92C52 /* TriangleUIVIew.swift */; };
+		45CE6D53237C06FF001D2C08 /* HelperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE6D52237C06FF001D2C08 /* HelperClass.swift */; };
+		45CE6D71237C6968001D2C08 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE6D70237C6968001D2C08 /* TableViewCell.swift */; };
+		45CE6DD3237C93E9001D2C08 /* KeyChainStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE6DD2237C93E9001D2C08 /* KeyChainStruct.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4544D47A237566BA00DA8443 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4544D479237566BA00DA8443 /* Pods_RDMKAccountKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3032243E03894EAA339D4ED8 /* Pods-RDMKAccountKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDMKAccountKit.release.xcconfig"; path = "Target Support Files/Pods-RDMKAccountKit/Pods-RDMKAccountKit.release.xcconfig"; sourceTree = "<group>"; };
+		4544D48723756D3C00DA8443 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4544D48923756D3C00DA8443 /* SKCountryPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SKCountryPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4544D48B23756D3C00DA8443 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4544D48D23756D3C00DA8443 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4544D49F2375751D00DA8443 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4544D4A2237575ED00DA8443 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4544D4A52375765100DA8443 /* SKCountryPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SKCountryPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4544D4A62375765100DA8443 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4544D4A72375765100DA8443 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4544D4B6237579D800DA8443 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		455D243C23742C8E00BF6B81 /* RDMKAccountKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RDMKAccountKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		455D243F23742C8E00BF6B81 /* RDMKAccountKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDMKAccountKit.h; sourceTree = "<group>"; };
 		455D244023742C8E00BF6B81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -28,6 +57,10 @@
 		455D244A23742D1100BF6B81 /* RDMKAccountDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDMKAccountDelegate.swift; sourceTree = "<group>"; };
 		455D245123742E6200BF6B81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		455D245423742E7900BF6B81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../CertificateTest/CertificateTest/Base.lproj/RDMK.storyboard; sourceTree = "<group>"; };
+		4585BFF02376A5B500D92C52 /* TriangleUIVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleUIVIew.swift; sourceTree = "<group>"; };
+		45CE6D52237C06FF001D2C08 /* HelperClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperClass.swift; sourceTree = "<group>"; };
+		45CE6D70237C6968001D2C08 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		45CE6DD2237C93E9001D2C08 /* KeyChainStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainStruct.swift; sourceTree = "<group>"; };
 		AAF2DFCDA7FE63DDF1A13DC7 /* Pods_RDMKAccountKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDMKAccountKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E834077BD76A96CA508DA8DE /* Pods-RDMKAccountKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDMKAccountKit.debug.xcconfig"; path = "Target Support Files/Pods-RDMKAccountKit/Pods-RDMKAccountKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61841784CC3308D5A364F889 /* Pods_RDMKAccountKit.framework in Frameworks */,
+				4544D478237566BA00DA8443 /* Pods_RDMKAccountKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +114,10 @@
 				455D244823742D1100BF6B81 /* SignInViewController.swift */,
 				455D243F23742C8E00BF6B81 /* RDMKAccountKit.h */,
 				455D244023742C8E00BF6B81 /* Info.plist */,
+				4585BFF02376A5B500D92C52 /* TriangleUIVIew.swift */,
+				45CE6D52237C06FF001D2C08 /* HelperClass.swift */,
+				45CE6D70237C6968001D2C08 /* TableViewCell.swift */,
+				45CE6DD2237C93E9001D2C08 /* KeyChainStruct.swift */,
 			);
 			path = RDMKAccountKit;
 			sourceTree = "<group>";
@@ -97,6 +134,16 @@
 		A939530BF7299F9AA0CC84E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4544D4B6237579D800DA8443 /* Alamofire.framework */,
+				4544D4A52375765100DA8443 /* SKCountryPicker.framework */,
+				4544D4A62375765100DA8443 /* SwiftKeychainWrapper.framework */,
+				4544D4A72375765100DA8443 /* SwiftyJSON.framework */,
+				4544D4A2237575ED00DA8443 /* Alamofire.framework */,
+				4544D49F2375751D00DA8443 /* SwiftyJSON.framework */,
+				4544D48723756D3C00DA8443 /* Alamofire.framework */,
+				4544D48923756D3C00DA8443 /* SKCountryPicker.framework */,
+				4544D48B23756D3C00DA8443 /* SwiftKeychainWrapper.framework */,
+				4544D48D23756D3C00DA8443 /* SwiftyJSON.framework */,
 				AAF2DFCDA7FE63DDF1A13DC7 /* Pods_RDMKAccountKit.framework */,
 			);
 			name = Frameworks;
@@ -125,6 +172,7 @@
 				455D243823742C8E00BF6B81 /* Sources */,
 				455D243923742C8E00BF6B81 /* Frameworks */,
 				455D243A23742C8E00BF6B81 /* Resources */,
+				4544D47A237566BA00DA8443 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -210,10 +258,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45CE6D53237C06FF001D2C08 /* HelperClass.swift in Sources */,
+				45CE6D71237C6968001D2C08 /* TableViewCell.swift in Sources */,
 				455D244C23742D1100BF6B81 /* SignInViewController.swift in Sources */,
+				4585BFF12376A5B500D92C52 /* TriangleUIVIew.swift in Sources */,
 				455D244D23742D1100BF6B81 /* RDMKAccountKit.swift in Sources */,
 				455D244E23742D1100BF6B81 /* RDMKAccountDelegate.swift in Sources */,
 				455D244B23742D1100BF6B81 /* OTPViewController.swift in Sources */,
+				45CE6DD3237C93E9001D2C08 /* KeyChainStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +334,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
@@ -340,7 +392,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -371,6 +423,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+					"$(BUILT_PRODUCTS_DIR)/Alamofire",
+					"$(BUILT_PRODUCTS_DIR)SKCountryPicker",
+					"$(BUILT_PRODUCTS_DIR)/SwiftKeychainWrapper",
+					"$(BUILT_PRODUCTS_DIR)/SwiftyJSON",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nafis.RDMKAccountKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -399,6 +455,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+					"$(BUILD_PRODUCTS_DIR)/Alamofire",
+					"$(BUILD_PRODUCTS_DIR)SKCountryPicker",
+					"$(BUILD_PRODUCTS_DIR)/SwiftKeychainWrapper",
+					"$(BUILD_PRODUCTS_DIR)/SwiftyJSON",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nafis.RDMKAccountKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

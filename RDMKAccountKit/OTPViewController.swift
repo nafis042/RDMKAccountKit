@@ -25,10 +25,13 @@ class OTPViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var TopBackView: UIView!
     @IBOutlet weak var BackButton: UIButton!
     @IBOutlet weak var ResendButton: UIButton!
-    var delegate: RDMKAccountDelegate?
+    weak var delegate: RDMKAccountDelegate?
     
     var Phone: String = ""
     var Token: String = ""
+    var apiKey: String = ""
+    var requestUrl: String = ""
+    var decodeFunction: ((_ data: Data) -> Any)? = nil
     
     
     @IBAction func BackButtonPressed(_ sender: Any) {
@@ -84,34 +87,21 @@ class OTPViewController: UIViewController, UITextFieldDelegate {
                     if let value = response.data {
                         do {
                             let json = try JSON(data: value)
+                            self.callUserDetails(access_token: json["access_token"].stringValue)
                             print(json["access_token"].string!)
-                            DispatchQueue.main.async {
-                                    self.LoadingView.layer.removeAllAnimations()
-                                    self.LoadingView.alpha = 0.0
-                                    self.LoadingView.transform = .identity
-                                    self.CheckImageView.alpha = 1.0
-                                }
 
-                               DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                                   UIView.animate(withDuration: 0.5, animations: {
-                                       self.CheckImageView.setImageColor(color: UIColor(hexString: "#FFFFFF"))
-                                       self.LoadingView.alpha = 1.0
-                                   }, completion: { finish in
-                                       print("animation complete")
-                                   })
-                               }
                             let saveSuccessful: Bool = KeychainWrapper.standard.set(json["access_token"].string!, forKey: "ridmik_access_token")
                             if(saveSuccessful){
                                 print("stored data in keychain")
-                                self.delegate?.didCompleteLoginWithAccessToken(token: json["access_token"].string!)
+                            
                             }
                             else{
                                 print("failed to store data in keychain")
-                                self.delegate?.didFailWithError(error: "something went wrong")
+//                                self.delegate?.didFailWithError(error: "something went wrong")
                             }
                         } catch let error as NSError {
                             print( "JSON parse error \(error)")
-                            self.delegate?.didFailWithError(error: "token parse error")
+                            
                         }
                        
                     }
@@ -123,6 +113,102 @@ class OTPViewController: UIViewController, UITextFieldDelegate {
                 }
             }
     }
+    
+        func dataToJSON(data: Data) -> [[String:Any]]? {
+           do {
+    //           let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            return try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String : Any]]
+           } catch let myJSONError {
+               print(myJSONError)
+           }
+           return nil
+        }
+        
+        func jsonToData(json: Any) -> Data? {
+            do {
+                return try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
+            } catch let myJSONError {
+                print(myJSONError)
+            }
+            return nil;
+        }
+        
+    
+    func callUserDetails(access_token: String){
+        
+        
+        let url = "\(requestUrl)?access_token=\(access_token)"
+        AF.request(url, method: .get, encoding: URLEncoding.default).responseString { response in
+            switch response.response?.statusCode {
+               
+            case 200:
+            if let value = response.data {
+                
+                      DispatchQueue.main.async {
+                              self.LoadingView.layer.removeAllAnimations()
+                              self.LoadingView.alpha = 0.0
+                              self.LoadingView.transform = .identity
+                              self.CheckImageView.alpha = 1.0
+                          }
+                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                             UIView.animate(withDuration: 0.5, animations: {
+                                 self.CheckImageView.setImageColor(color: UIColor(hexString: "#FFFFFF"))
+                                 self.LoadingView.alpha = 1.0
+                             }, completion: { finish in
+                                 print("animation complete")
+                                 let decodedJson: Any = self.decodeFunction!(value)
+                                let keychain = KeychainWrapper(serviceName: "ridmik", accessGroup: "A2D242JD56.com.nafis.RDMKAccountKit")
+                                 let retrievedData: Data? = keychain.data(forKey: "ridmik_account")
+                                 if(retrievedData != nil){
+                                     print("found in keychain")
+                                     var retrievedJson = self.dataToJSON(data: retrievedData!)!
+                                     retrievedJson.append(decodedJson as! [String : Any])
+                                     let decodedDataArray : Data = self.jsonToData(json: retrievedJson)!
+                                      print(String(data: decodedDataArray, encoding: .utf8)!)
+                                      let saveSuccessful: Bool = keychain.set(decodedDataArray, forKey: "ridmik_account")
+                                     if(saveSuccessful){
+                                         print("stored data in keychain")
+                                     }
+                                     else{
+                                         print("failed to store data in keychain")
+                                     }
+                                 
+                                 }
+                                 else{
+                                     print("no previous account found in keychain")
+                                     let decodedDataArray : Data = self.jsonToData(json: [decodedJson])!
+                                     print(String(data: decodedDataArray, encoding: .utf8)!)
+                                     let saveSuccessful: Bool = keychain.set(decodedDataArray, forKey: "ridmik_account")
+                                    if(saveSuccessful){
+                                        print("stored data in keychain")
+                                    }
+                                    else{
+                                        print("failed to store data in keychain")
+                                    }
+                                 }
+                                
+                                
+                                
+                                 self.delegate?.didCompleteLoginWithAccessToken(token: String(data: value, encoding: .utf8)!)
+                             })
+                         }
+                
+                
+                
+                     
+            
+
+                    
+                 }
+                
+                
+            default:
+                print("error \(response.response?.statusCode)")
+                self.delegate?.didFailWithError(error: " error with response code  \(response.response?.statusCode)")
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,6 +250,7 @@ class OTPViewController: UIViewController, UITextFieldDelegate {
     @objc func TopBackViewTapped(){
         print("top back view tapped")
         self.view.endEditing(true)
+//        delegate?.didCompleteLoginWithAccessToken(token: "success")
     }
     
     func addBottomBorderTo(textField:UITextField) {

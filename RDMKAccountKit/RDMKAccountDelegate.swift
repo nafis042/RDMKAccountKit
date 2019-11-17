@@ -9,7 +9,7 @@
 import Foundation
 
 
-public protocol RDMKAccountDelegate{
+public protocol RDMKAccountDelegate : class{
     
     func didCompleteLoginWithAccessToken(token: String)
     func didFailWithError(error: String)
